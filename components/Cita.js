@@ -3,20 +3,19 @@ import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 
 export default function Cita({ cita, eliminarPaciente }) {
   const dialogoEliminar = (id) => {
-    console.log('Eliminar', id);
     eliminarPaciente(id);
   };
   return (
     <View style={styles.cita}>
-      <View>
+      <View style={styles.field}>
         <Text style={styles.label}>Paciente:</Text>
         <Text style={styles.texto}>{cita.paciente}</Text>
       </View>
-      <View>
+      <View style={styles.field}>
         <Text style={styles.label}>Propietario:</Text>
         <Text style={styles.texto}>{cita.propietario}</Text>
       </View>
-      <View>
+      <View style={styles.field}>
         <Text style={styles.label}>Sintomas:</Text>
         <Text style={styles.texto}>{cita.sintomas}</Text>
       </View>
@@ -29,37 +28,41 @@ export default function Cita({ cita, eliminarPaciente }) {
           <Text style={styles.textoEliminar}>Eliminar &times;</Text>
         </TouchableHighlight>
       </View>
-      {/* <Button title="Eliminar" /> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   cita: {
-    backgroundColor: '#fff',
-    borderBottomColor: '#e1e1e1',
-    borderStyle: 'solid',
-    borderBottomWidth: 1,
-    paddingVertical: 20,
-    paddingHorizontal: 10,
+    backgroundColor: '#F6F6F7',
+    padding: 15,
+    borderRadius: 15,
+    marginBottom: 20,
+  },
+  field: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
   },
   label: {
     fontWeight: 'bold',
-    fontSize: 18,
-    marginTop: 16,
+    fontSize: 20,
   },
   texto: {
     fontSize: 18,
+    marginLeft: 8,
+    color: '#7d7c83',
   },
   btnEliminar: {
     padding: 10,
     backgroundColor: 'red',
-    marginVertical: 10,
-    borderRadius: 8,
+    borderRadius: 12,
   },
   textoEliminar: {
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
+    fontSize: 18,
+    padding: 4,
   },
 });

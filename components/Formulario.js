@@ -12,7 +12,7 @@ import {
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import shortid from 'shortid';
 
-export default function Formulario({ citas, setCitas, mostrarFormulario }) {
+export default function Formulario({ citas, setCitas, mostrarFormulario, guardarCita }) {
   const [paciente, setPaciente] = useState('');
   const [propietario, setPropietario] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -72,6 +72,10 @@ export default function Formulario({ citas, setCitas, mostrarFormulario }) {
     // agregamos al state
     const nuevasCitas = [...citas, cita];
     setCitas(nuevasCitas);
+
+    // guardaremos la cita en storage
+    guardarCita(nuevasCitas);
+
     // ocultar formulario
     mostrarFormulario();
   };
@@ -164,7 +168,7 @@ export default function Formulario({ citas, setCitas, mostrarFormulario }) {
 
 const styles = StyleSheet.create({
   formulario: {
-    backgroundColor: '#fff',
+    backgroundColor: '#F6F6F7',
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 8,
@@ -177,6 +181,7 @@ const styles = StyleSheet.create({
   input: {
     marginTop: 10,
     height: 50,
+    backgroundColor: '#fff',
     borderColor: '#e1e1e1',
     borderStyle: 'solid',
     borderWidth: 2,
@@ -185,13 +190,15 @@ const styles = StyleSheet.create({
   },
   btnSubmit: {
     padding: 10,
-    backgroundColor: 'green',
-    marginVertical: 10,
-    borderRadius: 8,
+    backgroundColor: '#005CFF',
+    marginVertical: 20,
+    borderRadius: 12,
   },
   textoSubmit: {
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
+    fontSize: 18,
+    padding: 4,
   },
 });
